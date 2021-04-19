@@ -147,6 +147,7 @@ class MyApp extends StatelessWidget {
   }); */
  */
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -264,8 +265,20 @@ class MyHome extends StatelessWidget {
                           return showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: Text('Information'),
+                              return CupertinoAlertDialog(
+                                title: Text('Information',
+                                    style: TextStyle(
+                                      fontFamily: 'Raleway',
+                                      fontSize: 36,
+                                    )),
+                                content: Text('Lorem Ipsum'),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text('Close'))
+                                ],
                               );
                             },
                           );
