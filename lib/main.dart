@@ -10,7 +10,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Card Assignment',
       home: Scaffold(
-          body: Column(
+          body: Stack(
+        alignment: AlignmentDirectional.bottomCenter,
+        clipBehavior: Clip.none,
         children: <Widget>[
           Container(
             width: 500,
@@ -52,74 +54,29 @@ class MyApp extends StatelessWidget {
               ),
             )),
           ),
-          Card(
-              child: Container(
-            height: 200,
-            width: 300,
-            child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(top: 10.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(80),
-                  child: Image.network(
-                    'https://i.imgur.com/ZLhqyQK.jpg',
-                    height: 120,
-                    width: 120,
+          Positioned(
+            bottom: -100,
+            child: Card(
+                child: Container(
+              height: 200,
+              width: 300,
+              child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(top: 10.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(80),
+                    child: Image.network(
+                      'https://i.imgur.com/ZLhqyQK.jpg',
+                      height: 120,
+                      width: 120,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: 6),
-            ]),
-          )),
+              ]),
+            )),
+          ),
         ],
       )),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
     );
   }
 }
